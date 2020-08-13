@@ -22,7 +22,7 @@ from django.contrib.staticfiles.views import serve
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^$',IndexView.as_view(),name="index"),
-    re_path(r'^suggest&',SearchSuggest.as_view(),name="suggest"),
-    re_path(r'^search&',SearchView.as_view(),name="search"),
+    re_path(r'^suggest$',SearchSuggest.as_view(),name="suggest"),
+    re_path(r'^search',SearchView.as_view(),name="search"),
     path('favicon.ico', serve, {'path': 'img/favicon.ico'})
 ]

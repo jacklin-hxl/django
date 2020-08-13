@@ -37,7 +37,7 @@
                     </li>
                     <li>
                     	<span class="name">知乎</span>
-						<span class="unit">(9862)</span>
+						<span class="unit">({{ zhihu_question_count }})</span>
                     </li>
                     <li>
                     	<span class="name">拉勾网</span>
@@ -85,7 +85,7 @@
                                 </span>
                                 <span class="info">
                                     <label>发布时间：</label>
-                                    <span class="value">{{hit.create_date}}</span>
+                                    <span class="value">{{hit.create_time}}</span>
                                 </span>
                             </div>
                         </div>
@@ -101,6 +101,9 @@
             <div class="historyArea">
             	<div class="hotSearch">
                 	<h6>热门搜索</h6>
+                    {% for search_words in hot_search %}
+                    <li><a href="/search?q={{ search_words }}">{{ search_words }}</a></li>
+                    {% endfor %}
                 </div>
                 <div class="mySearch">
                 	<h6>我的搜索</h6>
@@ -182,9 +185,9 @@
 	//分页
 	$(".pagination").pagination({{ total_nums }}, {
 		current_page :{{ page|add:'-1' }}, //当前页码
-		items_per_page :10,
-		display_msg :true,
-		callback :pageselectCallback
+		items_per_page:10,
+		display_msg:true,
+		callback:pageselectCallback
 	});
 	function pageselectCallback(page_id, jq) {
 		window.location.href=search_url+'?q='+key_words+'&p='+(page_id+1)+'&s_type='+s_type

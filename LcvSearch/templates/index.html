@@ -38,7 +38,7 @@
             <div class="historyArea">
             	<p class="history">
                 	<label>热门搜索：</label>
-                    {% for search_words in topn_search %}
+                    {% for search_words in hot_search %}
                         <a href="/search?q={{ search_words }}">{{ search_words }}</a>
                     {% endfor %}
                 </p>
@@ -90,7 +90,7 @@
         $('.searchInput').bind(' input propertychange ',function(){
             var searchText = $(this).val();
             var tmpHtml = ""
-            data = []
+            var data = []
             $.ajax({
                 cache: false,
                 type: 'get',
