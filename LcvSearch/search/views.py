@@ -9,8 +9,9 @@ from elasticsearch import Elasticsearch
 from datetime import datetime
 import redis
 
-client = Elasticsearch(hosts=["127.0.0.1"])
-redis_cli = redis.StrictRedis()
+client = Elasticsearch(hosts=["192.168.140.150"])
+redis_cli = redis.StrictRedis(host="192.168.140.150",password="admin123")
+
 
 # Create your views here.
 class IndexView(View):
